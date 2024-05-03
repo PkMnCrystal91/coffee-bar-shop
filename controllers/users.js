@@ -1,14 +1,26 @@
-const { response } = require("express");
+const { request, response, query } = require("express");
 
 const getUsers = (req, res = response) => {
+  const { q, nombre = "No name", apikey, page = 1, limit } = req.query;
+
   res.status(200).json({
     msg: "get API",
+
+    q,
+    nombre,
+    apikey,
+    page,
+    limit,
   });
 };
 
 const postUsers = (req = request, res = response) => {
+  const { nombre, edad } = req.body;
   res.status(200).json({
     msg: "post API",
+
+    nombre,
+    edad,
   });
 };
 
