@@ -17,6 +17,10 @@ const UserSchema = Schema({
   img: {
     type: String,
   },
+  google: {
+    type: Boolean,
+    default: false,
+  },
   rol: {
     type: String,
     require: true,
