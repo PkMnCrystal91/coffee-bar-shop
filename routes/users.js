@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { fieldsValidator } = require("../middlewares/fields-validator");
 const { check } = require("express-validator");
-const { roleValidator } = require("../helpers/db-validators");
+const { roleValidator, emailExist } = require("../helpers/db-validators");
 
 const {
   getUsers,
@@ -22,6 +22,7 @@ router.post(
       min: 6,
     }),
     check("email", "This is not a valid email").isEmail(),
+    check("email").custom(emailExist),
     check("rol").custom(roleValidator),
     fieldsValidator,
   ],
